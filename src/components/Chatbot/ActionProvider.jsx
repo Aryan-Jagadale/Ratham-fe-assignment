@@ -1,7 +1,6 @@
 import React from "react";
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-
   const handleMessageParserDocs = () => {
     const messages = createChatBotMessage("Enter your Name");
 
@@ -12,9 +11,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   };
 
   const handleAge = () => {
-    const messages = createChatBotMessage("Enter your Age",{
-      widget:"dropdown"
-    });
+    const messages = createChatBotMessage("Enter your Age");
+
+
 
     setState((prev) => ({
       ...prev,
@@ -22,12 +21,10 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
 
-
- const handleEndMessage = () => {
-  
-    const customMessage = createChatBotMessage("Thank you. In 5 seconds, bot will exit",
+  const handleEndMessage = () => {
+    const customMessage = createChatBotMessage(
+      "Thank you. In 5 seconds, bot will exit",
       {
-        
         widget: "endMessage",
       }
     );
@@ -35,7 +32,29 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       ...prev,
       messages: [...prev.messages, customMessage],
     }));
-  }
+  };
+
+
+  const handleEmptyMessage = () => {
+    const messages = createChatBotMessage("Please provide correct input!");
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, messages],
+    }));
+  };
+
+  
+  const handleConfirm = () => {
+    const messages = createChatBotMessage("Type \"Y\" to confirm?");
+
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, messages],
+    }));
+    
+  };
+  
 
   return (
     <div>
@@ -44,7 +63,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
           actions: {
             handleMessageParserDocs,
             handleAge,
-            handleEndMessage
+            handleEndMessage,
+            handleEmptyMessage,
+            handleConfirm
           },
         });
       })}

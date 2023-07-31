@@ -9,7 +9,7 @@ export const contentSlice = createSlice({
   },
   reducers: {
     setName: (state, action) => {
-      state.name = action.payload;
+      state.name = action.payload !== "y" ? action.payload : "";
     },
 
     setAge: (state, action) => {
@@ -17,7 +17,7 @@ export const contentSlice = createSlice({
     },
     setOpen: (state,action)=>{
       //console.log(state,action.payload);
-      state.open = Boolean(action.payload)
+      state.open = Number(action.payload);
     }
   },
 });

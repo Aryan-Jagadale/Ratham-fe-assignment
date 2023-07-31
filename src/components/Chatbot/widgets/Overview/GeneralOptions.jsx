@@ -8,7 +8,6 @@ const GeneralOptions = (props) => {
           handler: props.actionProvider.handleMessageParserDocs,
           id: 1,
         },
-        
       ];
   return (
     <Options options={options} />

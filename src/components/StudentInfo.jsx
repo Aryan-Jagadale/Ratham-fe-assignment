@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const StudentInfo = () => {
   const info = useSelector((state) => state.content);
+
   //console.log(info);
   return (
     <div
@@ -23,6 +24,7 @@ const StudentInfo = () => {
         }}
         className="redirect-link"
         to={"/"}
+        
       >
         Redirect to Home page
       </Link>
